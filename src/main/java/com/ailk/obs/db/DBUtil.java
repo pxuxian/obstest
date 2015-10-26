@@ -59,7 +59,7 @@ public class DBUtil {
 	/*
 	 * 执行select查询，返回记录总数
 	 */
-	public static int executeSelect(String sql) throws Exception {
+	public static int executeSelect(String sql) {
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -74,12 +74,14 @@ public class DBUtil {
 			}
 			return count;
 		} catch (Exception e) {
-			throw e;
+			e.printStackTrace();
+			;
 		} finally {
 			close(rs);
 			close(stmt);
 			close(conn);
 		}
+		return 0;
 
 	}
 
@@ -98,7 +100,7 @@ public class DBUtil {
 			return stmt.executeUpdate(sql);
 		} catch (Exception e) {
 			throw e;
-		}finally{
+		} finally {
 			close(rs);
 			close(stmt);
 			close(conn);
