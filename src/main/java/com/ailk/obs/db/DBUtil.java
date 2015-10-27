@@ -76,7 +76,6 @@ public class DBUtil {
 			return count;
 		} catch (Exception e) {
 			e.printStackTrace();
-			;
 		} finally {
 			close(rs);
 			close(stmt);
