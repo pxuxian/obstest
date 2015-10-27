@@ -15,14 +15,15 @@ public class DBUtil {
 	private final static String DBPASSWORD = PropertiesUtil.getInstance().get("DB_PASSWORD");
 
 	// 获得数据库连接
-	public static Connection getConnection() throws Exception {
+	public static Connection getConnection() {
 		try {
 			Class.forName(DBDRIVER);
 			Connection conn = DriverManager.getConnection(DBURL, DBUSER, DBPASSWORD);
 			return conn;
 		} catch (Exception e) {
-			throw new Exception("获得数据库连接失败");
+			e.printStackTrace();
 		}
+		return null;
 	}
 
 	public static void close(Connection conn) {
