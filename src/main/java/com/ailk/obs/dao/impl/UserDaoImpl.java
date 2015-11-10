@@ -23,16 +23,14 @@ public class UserDaoImpl implements UserDao {
 		Connection conn = DBUtil.getConnection();
 		try {
 			PreparedStatement ps = conn
-					.prepareStatement("insert into t_user(userId,userName,passWd,phone,mail,sex,summary,address) valuse(?,?,?,?,?,?,?,?)");
-			ps.setInt(1, user.getUserId());
-			ps.setString(2, user.getUserName());
-			ps.setString(3, user.getPassWd());
-			ps.setString(4, user.getPhone());
-			ps.setString(5, user.getMail());
-			ps.setInt(6,user.getSex());
+					.prepareStatement("insert into t_user(userName,passWd,phone,mail,sex,summary,address,createtime) values(?,?,?,?,?,?,?,now())");
+			ps.setString(1, user.getUserName());
+			ps.setString(2, user.getPassWd());
+			ps.setString(3, user.getPhone());
+			ps.setString(4, user.getMail());
+			ps.setInt(5,user.getSex());
+			ps.setString(6, user.getSummary());
 			ps.setString(7, user.getSummary());
-			ps.setString(8, user.getSummary());
-			ps.setDate(9, user.getCreatetime());
 			ps.executeUpdate();
 			ps.close();
 			conn.close();

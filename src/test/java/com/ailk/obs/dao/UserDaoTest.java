@@ -27,12 +27,11 @@ public class UserDaoTest {
 		User user = new User();
 		user.setUserName("wangjing");
 		user.setPassWd("wangjing");
-		user.setPhone("123");
-		user.setMail("wangjing");
+		user.setPhone("13577777777");
+		user.setMail("wangjing@163.com");
 		user.setSex(0);
-		user.setSummary("wangjing");
-		user.setAddress("wangjing");
-		user.setCreatetime(null);
+		user.setSummary("beijing");
+		user.setAddress("beijing");
 		userDao.addUser(user);
 		
 		
