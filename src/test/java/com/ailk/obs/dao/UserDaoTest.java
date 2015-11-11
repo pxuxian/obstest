@@ -14,13 +14,14 @@ public class UserDaoTest {
 	@Test
 	public void testGet() {
 		UserDao userDao = new UserDaoImpl();
-	//	User user = userDao.getByUserName("wangjing");
-		//Assert.assertEquals(true, user != null);
+		int userCount = userDao.getByUserName("wangjing");
+		System.out.println("userCount==" + userCount);
+		Assert.assertEquals(1,userCount);
 	}
 	
 
 	
-	@Test
+	/*@Test
 	public void testSet(){
 		UserDao userDao = new UserDaoImpl();
 		
@@ -32,9 +33,8 @@ public class UserDaoTest {
 		user.setSex(0);
 		user.setSummary("beijing");
 		user.setAddress("beijing");
-		userDao.addUser(user);
+		userDao.addUser(user);	
 		
-		
-	}
+	}*/
 	
 }

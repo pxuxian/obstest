@@ -12,7 +12,7 @@ public class UserDaoImpl implements UserDao {
 	// 通过username查找用户，返回记录条数
 	public int getByUserName(String userName) {
 
-		String sql = "select " + '*' + " from " + "user" + " where " + "userName" + " = " + userName;
+		String sql = "select " + '*' + " from " + "t_user" + " where " + "userName" + " = '" + userName + "'";
 		System.out.println("sql === " + sql);
 		return DBUtil.executeSelect(sql);
 	}
