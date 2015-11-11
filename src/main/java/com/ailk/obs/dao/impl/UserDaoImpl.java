@@ -3,6 +3,7 @@ package com.ailk.obs.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
 import com.ailk.obs.dao.UserDao;
 import com.ailk.obs.db.DBUtil;
 import com.ailk.obs.model.User;
@@ -11,8 +12,7 @@ public class UserDaoImpl implements UserDao {
 
 	// 通过username查找用户，返回记录条数
 	public int getByUserName(String userName) {
-
-		String sql = "select " + '*' + " from " + "t_user" + " where " + "userName" + " = '" + userName + "'";
+		String sql = "select * from t_user where userName='" + userName + "'";
 		System.out.println("sql === " + sql);
 		return DBUtil.executeSelect(sql);
 	}

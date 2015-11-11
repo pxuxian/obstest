@@ -2,7 +2,6 @@ package com.ailk.obs.model;
 
 import java.sql.Date;
 
-
 //”√ªß¿‡
 public class User {
 	private int userId;
@@ -14,6 +13,14 @@ public class User {
 	private String summary;
 	private String address;
 	private Date createtime;
+
+	public User() {
+	}
+
+	public User(String userName, String passWd) {
+		this.userName = userName;
+		this.passWd = passWd;
+	}
 
 	public int getUserId() {
 		return userId;
