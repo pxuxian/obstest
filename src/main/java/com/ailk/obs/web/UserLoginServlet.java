@@ -1,4 +1,4 @@
-package com.ailk.obs.service.web;
+package com.ailk.obs.web;
 
 import java.io.IOException;
 
