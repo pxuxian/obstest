@@ -9,7 +9,7 @@ public class User {
 	private String passWd;
 	private String phone;
 	private String mail;
-	private int sex;
+	private String sex;
 	private String summary;
 	private String address;
 	private Date createtime;
@@ -20,6 +20,16 @@ public class User {
 	public User(String userName, String passWd) {
 		this.userName = userName;
 		this.passWd = passWd;
+	}
+
+	public User(String userName, String passWd, String phone, String mail, String sex, String summary, String address) {
+		this.userName = userName;
+		this.passWd = passWd;
+		this.phone = phone;
+		this.mail = mail;
+		this.sex = sex;
+		this.summary = summary;
+		this.address = address;
 	}
 
 	public int getUserId() {
@@ -62,11 +72,11 @@ public class User {
 		this.mail = mail;
 	}
 
-	public int getSex() {
+	public String getSex() {
 		return sex;
 	}
 
-	public void setSex(int sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 

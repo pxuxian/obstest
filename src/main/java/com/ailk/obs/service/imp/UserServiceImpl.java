@@ -1,22 +1,41 @@
 package com.ailk.obs.service.imp;
 
+import java.util.List;
+
+import com.ailk.obs.dao.UserDao;
+import com.ailk.obs.dao.impl.UserDaoImpl;
 import com.ailk.obs.model.User;
 import com.ailk.obs.service.UserService;
 
 public class UserServiceImpl implements UserService {
+	UserDao userDao = new UserDaoImpl();
 
+	//  «∑Ò◊¢≤·
 	public boolean isRegister(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		String userName = user.getUserName();
+		int userCount = userDao.getByUserName(userName);
+		if (userCount > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
+	// ◊¢≤·
 	public void register(User user) {
-		// TODO Auto-generated method stub
-
+		userDao.addUser(user);
 	}
 
+	//  «∑Ò‘ –Ìµ«»Î
 	public boolean login(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		String userName = user.getUserName();
+		String passwd = user.getPassWd();
+		List<String> userinfoDB = userDao.getUserByName(userName);
+		String passWdDB = userinfoDB.get(1);
+		if (passwd.endsWith(passWdDB)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

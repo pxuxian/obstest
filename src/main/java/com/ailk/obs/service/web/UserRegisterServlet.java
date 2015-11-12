@@ -1,6 +1,7 @@
 package com.ailk.obs.service.web;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,7 +15,7 @@ import com.ailk.obs.service.imp.UserServiceImpl;
 
 public class UserRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1367941784575108588L;
-	
+
 	private UserService userService;
 
 	@Override
@@ -23,17 +24,22 @@ public class UserRegisterServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+			IOException {
 		String userName = request.getParameter("userName");
-		String passWord = request.getParameter("passWord");
-		User user = new User(userName, passWord);
+		String passWd = request.getParameter("passWd");
+		String phone = request.getParameter("phone");
+		String mail = request.getParameter("mail");
+		String sex = request.getParameter("sex");
+		String summary = request.getParameter("summary");
+		String address = request.getParameter("address");
+
+		User user = new User(userName, passWd, phone, mail, sex, summary, address);
 		boolean result = userService.isRegister(user);
-		
+
 		if (result == true) {
-			// ...
 			request.setAttribute("info", "×¢²á³É¹¦£¡");
 		} else {
-			// ...
 			request.setAttribute("info", "×¢²áÊ§°Ü£¡");
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/result.jsp");
