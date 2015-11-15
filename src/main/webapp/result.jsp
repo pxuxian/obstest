@@ -10,7 +10,11 @@
 	<%
 		String info = (String) request.getAttribute("info");
 	%>
-
 	<%=info%>
+	<%
+		String userName = (String) request.getSession().getAttribute("userName");
+	%>
+
+	<%=userName%>
 </body>
 </html>

@@ -2,7 +2,6 @@ package com.ailk.obs.web;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,29 +19,67 @@ public class UserLoginServlet extends HttpServlet {
 	public void init() throws ServletException {
 		userService = new UserServiceImpl();
 	}
+	
+//	@Override
+//	protected void service(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//		String userName = request.getParameter("userName");
+//		String passWord = request.getParameter("passWord");
+//		User user = new User(userName, passWord);
+//		boolean loginResult = false;
+//		try {
+//			loginResult = userService.login(user);
+//			response.getWriter().write("登入成功");
+//			response.flushBuffer();
+//			return;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		if (!loginResult) {
+//			response.getWriter().write("登入失败");
+//			response.flushBuffer();
+//		}
+//	}
 
+	/**
+	 * 内部跳转
+	 */
+//	@Override
+//	protected void service(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//		String userName = request.getParameter("userName");
+//		String passWord = request.getParameter("passWord");
+//		User user = new User(userName, passWord);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("/result.jsp");
+//		boolean loginResult = false;
+//		try {
+//			loginResult = userService.login(user);
+//			request.setAttribute("info", "登入成功");
+//			dispatcher.forward(request, response);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		if (!loginResult) {
+//			request.setAttribute("info", "登入失败");
+//			dispatcher.forward(request, response);
+//		}
+//	}
+	
+	/**
+	 * 重定向
+	 */
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-			IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String userName = request.getParameter("userName");
 		String passWord = request.getParameter("passWord");
 		User user = new User(userName, passWord);
-		// 是否注册
-		boolean isRegisterResult = userService.isRegister(user);
-		// 注册
-		if (isRegisterResult == true) {
-			boolean loginResult = userService.login(user);
-			if (loginResult == true) {
-				request.setAttribute("info", "登入成功");
-			} else {
-				request.setAttribute("info", "登入失败");
-			}
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/loginReult.jsp");
-			dispatcher.forward(request, response);
-		} else {
-			// 未注册,提示注册信息
-			
+		try {
+//			userService.login(user);
+			request.getSession().setAttribute("userName", "abc");
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
+		response.sendRedirect("/result.jsp");
 	}
 }

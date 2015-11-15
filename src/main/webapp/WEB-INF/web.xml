@@ -12,7 +12,7 @@
 	
 	<servlet>
 		<servlet-name>userRegister</servlet-name>
-		<servlet-class>com.ailk.obs.service.web.UserRegisterServlet</servlet-class>
+		<servlet-class>com.ailk.obs.web.UserRegisterServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>userRegister</servlet-name>
@@ -21,7 +21,7 @@
 	
 	<servlet>
 		<servlet-name>login</servlet-name>
-		<servlet-class>com.ailk.obs.service.web.UserLoginServlet</servlet-class>
+		<servlet-class>com.ailk.obs.web.UserLoginServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>login</servlet-name>
