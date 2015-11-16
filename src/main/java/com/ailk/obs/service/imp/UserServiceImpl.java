@@ -15,9 +15,9 @@ public class UserServiceImpl implements UserService {
 		String userName = user.getUserName();
 		int userCount = userDao.getByUserName(userName);
 		if (userCount > 0) {
-			return true;
-		} else {
 			return false;
+		} else {
+			return true;
 		}
 	}
 
@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 		String passwd = user.getPassWd();
 		List<String> userinfoDB = userDao.getUserByName(userName);
 		String passWdDB = userinfoDB.get(1);
-		if (passwd.endsWith(passWdDB)) {
+		if (passwd.equals(passWdDB)) {
 			return true;
 		} else {
 			return false;

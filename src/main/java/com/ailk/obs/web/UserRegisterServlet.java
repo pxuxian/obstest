@@ -26,6 +26,7 @@ public class UserRegisterServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException,
 			IOException {
+		String info = "";
 		String userName = request.getParameter("userName");
 		String passWd = request.getParameter("passWd");
 		String phone = request.getParameter("phone");
@@ -38,12 +39,13 @@ public class UserRegisterServlet extends HttpServlet {
 		boolean result = userService.isRegister(user);
 
 		if (result == true) {
-			request.setAttribute("info", "×¢²á³É¹¦£¡");
+			userService.register(user);
+			info = "register sucess!";
 		} else {
-			request.setAttribute("info", "×¢²áÊ§°Ü£¡");
+			info = "register faile!";
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/result.jsp");
-		dispatcher.forward(request, response);
+		response.getWriter().write(info);
+		response.flushBuffer();
 	}
 
 }

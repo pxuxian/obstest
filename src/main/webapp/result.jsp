@@ -7,14 +7,20 @@
 <title>result</title>
 </head>
 <body>
-	<%
+	<%-- <%
 		String info = (String) request.getAttribute("info");
 	%>
 	<%=info%>
 	<%
 		String userName = (String) request.getSession().getAttribute("userName");
 	%>
+	<%=userName%> --%>
 
-	<%=userName%>
+	<%
+		String info = (String) request.getSession().getAttribute("info");
+	%>
+	<%=info %>
+	
+	
 </body>
 </html>
